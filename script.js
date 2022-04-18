@@ -20,10 +20,21 @@ function playRound(playerSelection, computerSelection) {
      } else {
           return outcome_lose;
      }
-          
-     
    }
+  
+function game() {
+     for (let i = 0; i < 5; i++){
+          playRound(playerSelection, computerSelection);
+     }
+     if (player > computer){
+          console.log('You win the game!');
+     } else {
+          console.log('You lose!');
+     }
+}
    
-const playerSelection = "Rock";
+const playerSelection = document.querySelector('input').value;
 const computerSelection = computerPlay();
 console.log(playRound(playerSelection, computerSelection));
+
+game();
