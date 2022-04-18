@@ -44,12 +44,10 @@ function game() {
           }
      }
      if (player > computer){
-          console.log('You win the game!');
+          alert(`You Win! Your score: ${player} ||| Computer score: ${computer}`)
      } else {
-          console.log('You lose!');
+          alert(`You Loss! Your score: ${player} ||| Computer score: ${computer}`)
      }
-     console.log(`Your score: ${player}`)
-     console.log(`Computer score: ${computer}`)
 }
 
 game("ROCK");
