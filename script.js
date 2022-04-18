@@ -1,24 +1,24 @@
 function computerPlay() {
      let num = Math.floor((Math.random() * 3) + 1);
-     if (num === 1) {return cpuPick = "Rock";}
-     if (num === 2) {return cpuPick = "Paper";}
-     if (num === 3) {return cpuPick = "Scissor";}
+     if (num === 1) {return cpuPick = "ROCK";}
+     if (num === 2) {return cpuPick = "PAPER";}
+     if (num === 3) {return cpuPick = "SCISSOR";}
 }
 
 function playRound(playerSelection, computerSelection) {
      let outcome_win = `You Win! ${playerSelection} Beats ${computerSelection}!`;
      let outcome_lose = `You Lose! ${computerSelection} Beats ${playerSelection}!`;
 
-     if (playerSelection == computerSelection) {
+     if (playerSelection === computerSelection) {
           console.log("It's a tie");
           return;
-     } else if (playerSelection == "Scissor" && computerSelection == "Paper"){
+     } else if (playerSelection === "SCISSOR" && computerSelection === "PAPER"){
           console.log(outcome_win);
           return true;
-     } else if (playerSelection == "Rock" && computerSelection == "Scissor"){
+     } else if (playerSelection === "ROCK" && computerSelection === "SCISSOR"){
           console.log(outcome_win);
           return true;
-     } else if (playerSelection == "Scissor" && computerSelection == "Paper"){
+     } else if (playerSelection === "SCISSOR" && computerSelection === "PAPER"){
           console.log(outcome_win);
           return true;
      } else {
@@ -27,11 +27,12 @@ function playRound(playerSelection, computerSelection) {
      }
    }
   
-function game(playerSelection) {
+function game() {
      let player = 0;
      let computer = 0
      for (let i = 0; i < 5; i++){
-          let state = playRound(playerSelection, computerPlay());
+          let playerSelection = prompt('ROCK,PAPER or SCISSOR?')
+          let state = playRound(playerSelection.toUpperCase(), computerPlay());
           if (state === true){
                player++;
           } 
@@ -51,4 +52,4 @@ function game(playerSelection) {
      console.log(`Computer score: ${computer}`)
 }
 
-game("Rock");
+game("ROCK");
