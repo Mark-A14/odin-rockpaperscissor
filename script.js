@@ -10,31 +10,42 @@ function playRound(playerSelection, computerSelection) {
      let outcome_lose = `You Lose! ${computerSelection} Beats ${playerSelection}!`;
 
      if (playerSelection == computerSelection) {
-          return outcome = "It's a tie";
+          console.log("It's a tie");
+          return;
      } else if (playerSelection == "Scissor" && computerSelection == "Paper"){
-          return outcome_win;
+          console.log(outcome_win);
+          return true;
      } else if (playerSelection == "Rock" && computerSelection == "Scissor"){
-          return outcome_win;
+          console.log(outcome_win);
+          return true;
      } else if (playerSelection == "Scissor" && computerSelection == "Paper"){
-          return outcome_win;
+          console.log(outcome_win);
+          return true;
      } else {
-          return outcome_lose;
+          console.log(outcome_lose);
+          return false;
      }
    }
   
-function game() {
+function game(playerSelection) {
+     let player = 0;
+     let computer = 0
      for (let i = 0; i < 5; i++){
-          playRound(playerSelection, computerSelection);
+          let state = playRound(playerSelection, computerPlay());
+          if (state === true){
+               player++;
+          } 
+          if (state === false){
+               computer++;
+          }
      }
      if (player > computer){
           console.log('You win the game!');
      } else {
           console.log('You lose!');
      }
+     console.log(`Your score: ${player}`)
+     console.log(`Computer score: ${computer}`)
 }
-   
-const playerSelection = document.querySelector('input').value;
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
 
-game();
+game("Rock");
