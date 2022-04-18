@@ -38,6 +38,9 @@ function game(playerSelection) {
           if (state === false){
                computer++;
           }
+          if (state == undefined){
+               i--;
+          }
      }
      if (player > computer){
           console.log('You win the game!');
