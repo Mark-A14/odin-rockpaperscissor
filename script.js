@@ -12,7 +12,7 @@ function test (){
           playerScore.textContent = 0;
           cpuScore.textContent = 0;
      } else {
-          const who_win = playRound(this.id.toUpperCase(), computerPlay());
+          const who_win = playRound(this.id.toUpperCase(), computerPlay().toUpperCase());
           if (who_win){
                playerScore.textContent = intPlayerScore + 1;
           }  
@@ -25,23 +25,27 @@ function test (){
 
 function computerPlay() {
      let bg = document.getElementById('show-cpu-pick');
-     
      let num = Math.floor((Math.random() * 3) + 1);
+     let cpuPick = '';
      console.log(num);
-     if (num === 1) {
-          bg.style.backgroundImage = "url(./assets/rock_pc.png)";
-          return cpuPick = "ROCK";}
-     if (num === 2) {
-          bg.style.backgroundImage = "url(./assets/paper_pc.png)";
-          return cpuPick = "PAPER";}
-     if (num === 3) {
-          bg.style.backgroundImage = "url(./assets/scissor_pc.png)";
-          return cpuPick = "SCISSOR";}
+
+     switch (num) {
+          case 1:
+               cpuPick = 'rock';
+               break;
+          case 2:
+               cpuPick = 'paper';
+               break;
+          case 3:
+               cpuPick = 'scissor';
+               break;
+     
+     }
+     bg.style.backgroundImage = `url(./assets/${cpuPick}_pc.png)`;
+     return cpuPick.toUpperCase();
 }
 
 function playRound(playerSelection, computerSelection) {
-     let player = 0;
-     let cpu = 0;
      let outcome_win = `You Win! ${playerSelection} Beats ${computerSelection}!`;
      let outcome_lose = `You Lose! ${computerSelection} Beats ${playerSelection}!`;
 
@@ -54,7 +58,7 @@ function playRound(playerSelection, computerSelection) {
      } else if (playerSelection == "ROCK" && computerSelection == "SCISSOR"){
           console.log(outcome_win);
           return true;
-     } else if (playerSelection == "SCISSOR" && computerSelection == "PAPER"){
+     } else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
           console.log(outcome_win);
           return true;
      } else {
